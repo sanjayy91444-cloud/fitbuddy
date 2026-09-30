@@ -25,6 +25,6 @@ def update_workout_plan(original_plan: str, feedback: str) -> str:
     - Add a short introductory note explaining what adjustments were made.
     """
 
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    model = genai.GenerativeModel("gemini-2.5-flash")
     response = model.generate_content(prompt)
     return response.text

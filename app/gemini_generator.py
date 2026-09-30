@@ -2,10 +2,8 @@ import os
 import google.generativeai as genai
 from dotenv import load_dotenv
 
-# .env file-la irukra API key-ah load panrom
 load_dotenv()
 
-# Gemini AI-kku secret key kuduthu connect panrom
 api_key = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key=api_key)
 
@@ -25,6 +23,6 @@ def generate_workout_gemini(name: str, age: int, weight: int, goal: str, intensi
     Keep the formatting clean, structured, and easy to read.
     """
 
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    model = genai.GenerativeModel("gemini-2.5-flash")
     response = model.generate_content(prompt)
     return response.text

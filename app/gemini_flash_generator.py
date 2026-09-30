@@ -2,7 +2,6 @@ import os
 import google.generativeai as genai
 from dotenv import load_dotenv
 
-# .env-la irukra API key-ah load panrom
 load_dotenv()
 
 api_key = os.getenv("GEMINI_API_KEY")
@@ -22,6 +21,6 @@ def generate_nutrition_tip_with_flash(goal: str, weight: int) -> str:
     Keep the tone encouraging, crisp, and under 120 words.
     """
 
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    model = genai.GenerativeModel("gemini-2.5-flash")
     response = model.generate_content(prompt)
     return response.text
