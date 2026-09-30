@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 api_key = os.getenv("GEMINI_API_KEY")
-genai.configure(api_key=api_key)
+genai.configure(api_key=api_key, transport="rest")
 
 def update_workout_plan(original_plan: str, feedback: str) -> str:
     prompt = f"""
@@ -25,6 +25,6 @@ def update_workout_plan(original_plan: str, feedback: str) -> str:
     - Add a short introductory note explaining what adjustments were made.
     """
 
-    model = genai.GenerativeModel("gemini-2.5-flash")
+    model = genai.GenerativeModel("gemini-3.8-flash")
     response = model.generate_content(prompt)
     return response.text

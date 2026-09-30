@@ -1,11 +1,12 @@
 import os
+from click import prompt
 import google.generativeai as genai
 from dotenv import load_dotenv
 
 load_dotenv()
 
 api_key = os.getenv("GEMINI_API_KEY")
-genai.configure(api_key=api_key)
+genai.configure(api_key=api_key, transport="rest")
 
 def generate_workout_gemini(name: str, age: int, weight: int, goal: str, intensity: str) -> str:
     prompt = f"""
@@ -23,6 +24,6 @@ def generate_workout_gemini(name: str, age: int, weight: int, goal: str, intensi
     Keep the formatting clean, structured, and easy to read.
     """
 
-    model = genai.GenerativeModel("gemini-2.5-flash")
+    model = genai.GenerativeModel("gemini-3.8-flash")
     response = model.generate_content(prompt)
     return response.text
